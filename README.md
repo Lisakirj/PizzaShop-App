@@ -1,4 +1,4 @@
-Pet project Pizza App: choose your favorite pizza and place an order.
+Pet project 🍕Pizza App: choose your favorite pizza and place an order.
 
 🛠 Technologies:
 1. ReactJS 18
