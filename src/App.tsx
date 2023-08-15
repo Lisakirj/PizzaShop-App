@@ -1,4 +1,5 @@
 import "./assets/scss/app.scss";
+import CategoriesList from "./components/ui/CategoriesList";
 import Header from "./components/ui/header/Header";
 
 function App() {
@@ -9,16 +10,7 @@ function App() {
         <div className="content">
           <div className="container">
             <div className="content__top">
-              <div className="categories">
-                <ul>
-                  <li className="active">Все</li>
-                  <li>М'ясна</li>
-                  <li>Вегетаріанська</li>
-                  <li>Гриль</li>
-                  <li>Гостра</li>
-                  <li>Закрита</li>
-                </ul>
-              </div>
+              <CategoriesList />
               <div className="sort">
                 <div className="sort__label">
                   <svg
