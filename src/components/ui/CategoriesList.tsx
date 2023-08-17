@@ -1,5 +1,5 @@
 import { FC, useState } from "react";
-import { categories } from "../../mockData/categories";
+import categories from "../../mockData/categories.json";
 
 const CategoriesList: FC = () => {
   const [activeItem, setActiveItem] = useState(1);
