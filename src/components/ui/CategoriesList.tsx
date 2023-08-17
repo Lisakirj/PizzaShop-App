@@ -1,15 +1,20 @@
-import { FC } from "react";
+import { FC, useState } from "react";
+import { categories } from "../../mockData/categories";
 
 const CategoriesList: FC = () => {
+  const [activeItem, setActiveItem] = useState(1);
+
   return (
     <div className="categories">
       <ul>
-        <li className="active">Всі</li>
-        <li>М'ясна</li>
-        <li>Вегетаріанська</li>
-        <li>Гриль</li>
-        <li>Гостра</li>
-        <li>Закрита</li>
+        {categories.map((el) => (
+          <li
+            key={el.id}
+            className={activeItem === el.id ? "active" : ""}
+            onClick={() => setActiveItem(el.id)}>
+            {el.name}
+          </li>
+        ))}
       </ul>
     </div>
   );
