@@ -6,7 +6,7 @@ const HeaderLogo: FC = () => {
     <div className="header__logo">
       <img width="38" src={pizzaLogo} alt="Pizza logo" />
       <div>
-        <h1>React Pizza</h1>
+        <h1>React-Ts Pizza</h1>
         <p>найсмачніша піца у Всесвіті</p>
       </div>
     </div>
