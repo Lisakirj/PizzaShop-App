@@ -23,7 +23,7 @@ const PizzaOptions: FC<IPizzaOptions> = ({ types, sizes }) => {
       <ul>
         {sizes.map((opt, i) => (
           <li
-            key={i}
+            key={opt}
             className={activeSize === i ? "active" : ""}
             onClick={() => setActiveSize(i)}>
             {opt} см
