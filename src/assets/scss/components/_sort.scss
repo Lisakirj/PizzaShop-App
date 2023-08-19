@@ -19,6 +19,9 @@
       border-bottom: 1px dashed $orange;
       cursor: pointer;
     }
+    .desc {
+      rotate: 180deg;
+    }
   }
 
   &__popup {

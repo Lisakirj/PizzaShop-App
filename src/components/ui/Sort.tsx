@@ -1,10 +1,36 @@
-import { FC } from "react";
+import React from "react";
 
+import { FC, useState } from "react";
+type Option = {
+  id: number;
+  name: string;
+};
+const options: Option[] = [
+  { id: 1, name: "популярності" },
+  { id: 2, name: "ціні" },
+  { id: 3, name: "алфавіту" },
+];
 const Sort: FC = () => {
+  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const [selectOpt, setSelectOpt] = useState<string>("популярності");
+  const [sortBy, setSortBy] = useState<string>("asc");
+
+  const handleClick = (opt: string) => {
+    setSelectOpt(opt);
+    setIsOpen(false);
+  };
+  const toggleClass = () =>
+    sortBy === "asc" ? setSortBy("desc") : setSortBy("asc");
+
+  const handleSort = () => {
+    toggleClass();
+  };
+
   return (
     <div className="sort">
-      <div className="sort__label">
+      <div className="sort__label" onClick={handleSort}>
         <svg
+          className={sortBy}
           width="10"
           height="6"
           viewBox="0 0 10 6"
@@ -16,15 +42,22 @@ const Sort: FC = () => {
           />
         </svg>
         <b>Сортувати по:</b>
-        <span>популярності</span>
+        <span onClick={() => setIsOpen(!isOpen)}>{selectOpt}</span>
       </div>
-      <div className="sort__popup">
-        <ul>
-          <li className="active">популярності</li>
-          <li>ціні</li>
-          <li>алфавіту</li>
-        </ul>
-      </div>
+      {isOpen && (
+        <div className="sort__popup">
+          <ul>
+            {options.map((opt) => (
+              <li
+                className={selectOpt === opt.name ? "active" : ""}
+                key={opt.id}
+                onClick={() => handleClick(opt.name)}>
+                {opt.name}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
