@@ -4,15 +4,16 @@ Pet project 🍕Pizza App: choose your favorite pizza and place an order.
 1. Vite
 2. ReactJS 18
 3. TypeScript
-4. Redux Toolkit 
-5. React Router v6 
-6. Axios + Fetch
-7. React Query
-8. React Hooks
-9. React Hook Forms
-10. CSS-Modules / SCSS 
-11. React Content Loader (скелетон)
-12. React Pagination 
-13. Lodash.Debounce
-14. Code Splitting, React Loadable, useWhyDidYouUpdate
+4. Mockapi
+5. Redux Toolkit 
+6. React Router v6 
+7. Axios + Fetch
+8. React Query
+9. React Hooks
+10. React Hook Forms
+11. CSS-Modules / SCSS 
+12. React Content Loader (скелетон)
+13. React Pagination 
+14. Lodash.Debounce
+15. Code Splitting, React Loadable, useWhyDidYouUpdate
 
