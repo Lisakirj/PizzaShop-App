@@ -1,4 +1,4 @@
-import React from "react";
+// import React from "react";
 
 import { FC, useState } from "react";
 type Option = {
@@ -22,7 +22,7 @@ const Sort: FC = () => {
   const toggleClass = () =>
     sortBy === "asc" ? setSortBy("desc") : setSortBy("asc");
 
-  const handleSort = () => {
+  const handleSort: React.MouseEventHandler<HTMLDivElement> = () => {
     toggleClass();
   };
 
