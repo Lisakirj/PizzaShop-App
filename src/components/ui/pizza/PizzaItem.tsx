@@ -3,7 +3,7 @@ import { IPizzaItem } from "../../../types/pizzaItem";
 import PizzaOptions from "./PizzaOptions";
 import AddButton from "../../common/addButton";
 
-const PizzaItem: FC<IPizzaItem> = ({ pizza }) => {
+const PizzaItem: FC<{ pizza: IPizzaItem }> = ({ pizza }) => {
   return (
     <div className="pizza-block">
       <img className="pizza-block__image" src={pizza.imageUrl} alt="Pizza" />
