@@ -1,8 +1,10 @@
 import "./assets/scss/app.scss";
-import PizzaListPage from "./components/page/PizzaListPage/PizzaListPage";
-import CategoriesList from "./components/ui/CategoriesList";
-import Sort from "./components/ui/Sort";
+import { Routes, Route } from "react-router-dom";
+
 import Header from "./components/ui/header/Header";
+import Main from "./pages/Main";
+import Cart from "./pages/Cart";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
@@ -11,11 +13,11 @@ function App() {
         <Header />
         <div className="content">
           <div className="container">
-            <div className="content__top">
-              <CategoriesList />
-              <Sort />
-            </div>
-            <PizzaListPage />
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="*" element={<NotFound />} />
+            </Routes>
           </div>
         </div>
       </div>
