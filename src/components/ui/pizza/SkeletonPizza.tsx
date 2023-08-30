@@ -4,7 +4,7 @@ import ContentLoader from "react-content-loader";
 const SkeletonPizza: FC = () => {
   return (
     <ContentLoader
-      className="pizza-block"
+      className="pizza_block col-sm-5 col-lg-4 col-xl-3 card mb-0 mt-sm-1 mt-3 my-sm-4 border-0"
       speed={2}
       width={285}
       height={465}

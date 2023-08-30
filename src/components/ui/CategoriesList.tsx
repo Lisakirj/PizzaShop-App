@@ -5,18 +5,28 @@ const CategoriesList: FC = () => {
   const [activeItem, setActiveItem] = useState(1);
 
   return (
-    <div className="categories">
-      <ul>
+    <div className="col-12 col-lg-8 col-7 text-start">
+      <nav className="nav nav-pills my-4">
         {categories.map((el) => (
-          <li
+          <a
             key={el.id}
-            className={activeItem === el.id ? "active" : ""}
+            className={`text-sm-center nav-link ${
+              activeItem === el.id ? "active" : ""
+            }`}
             onClick={() => setActiveItem(el.id)}>
             {el.name}
-          </li>
+          </a>
         ))}
-      </ul>
+      </nav>
     </div>
+
+    //     <a
+    //       className=" text-sm-center nav-link active "
+    //       aria-current="page"
+    //       href="#">
+    //       Всі
+    //     </a>
+    //
   );
 };
 export default CategoriesList;

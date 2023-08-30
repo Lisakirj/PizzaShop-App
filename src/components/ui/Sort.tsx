@@ -1,18 +1,18 @@
-// import React from "react";
-
 import { FC, useState } from "react";
+import React from "react";
 type Option = {
   id: number;
   name: string;
 };
 const options: Option[] = [
-  { id: 1, name: "популярності" },
-  { id: 2, name: "ціні" },
-  { id: 3, name: "алфавіту" },
+  { id: 1, name: "популярністю" },
+  { id: 2, name: "ціною" },
+  { id: 3, name: "алфавітом" },
 ];
 const Sort: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectOpt, setSelectOpt] = useState<string>("популярності");
+  const [selectOpt, setSelectOpt] = useState("популярністю");
+
   const [sortBy, setSortBy] = useState<string>("asc");
 
   const handleClick = (opt: string) => {
@@ -22,14 +22,15 @@ const Sort: FC = () => {
   const toggleClass = () =>
     sortBy === "asc" ? setSortBy("desc") : setSortBy("asc");
 
-  const handleSort: React.MouseEventHandler<HTMLDivElement> = () => {
+  const handleSort: React.MouseEventHandler<SVGSVGElement> = () => {
     toggleClass();
   };
 
   return (
-    <div className="sort">
-      <div className="sort__label" onClick={handleSort}>
+    <div className="col-12 col-lg-4 col-3 text-end ">
+      <div className="btn-group justify-center align-items-center sort">
         <svg
+          onClick={handleSort}
           className={sortBy}
           width="10"
           height="6"
@@ -41,23 +42,32 @@ const Sort: FC = () => {
             fill="#2C2C2C"
           />
         </svg>
-        <b>Сортувати по:</b>
-        <span onClick={() => setIsOpen(!isOpen)}>{selectOpt}</span>
-      </div>
-      {isOpen && (
-        <div className="sort__popup">
-          <ul>
-            {options.map((opt) => (
-              <li
-                className={selectOpt === opt.name ? "active" : ""}
-                key={opt.id}
-                onClick={() => handleClick(opt.name)}>
-                {opt.name}
+        <span className="mx-2 fw-bold ">Сортувати за:</span>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          type="button"
+          className=""
+          data-bs-toggle="dropdown"
+          data-bs-display="static"
+          aria-expanded="false">
+          {selectOpt}
+        </button>
+        <ul className="dropdown-menu dropdown-menu-lg-end my-3 ">
+          {options.map((opt) => {
+            return (
+              <li key={opt.id} onClick={() => handleClick(opt.name)}>
+                <button
+                  className={`dropdown-item ${
+                    selectOpt === opt.name ? "active" : ""
+                  }`}
+                  type="button">
+                  {opt.name}
+                </button>
               </li>
-            ))}
-          </ul>
-        </div>
-      )}
+            );
+          })}
+        </ul>
+      </div>
     </div>
   );
 };

@@ -18,6 +18,7 @@ const PizzaListPage: FC = () => {
       try {
         const { data } = await axios.get(`items`);
         setItems(data as IPizzaItem[]);
+        console.log(data);
         setIsLoading(false);
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -28,12 +29,20 @@ const PizzaListPage: FC = () => {
   }, []);
   return (
     <>
-      <h2 className="content__title">Всі піци</h2>
-      <div className="content__items">
-        {isLoading
-          ? [...new Array(6)].map((_, i) => <SkeletonPizza key={i} />)
-          : items.map((item) => <PizzaItem pizza={item} key={item.id} />)}
-      </div>
+      <section className="pizza_list">
+        <div className="container">
+          <div className="row">
+            <div className="col fs-3 fw-bold mt-3 mt-sm-0">
+              <span>Всі піци</span>
+            </div>
+          </div>
+          <div className="row  justify-content-sm-between justify-content-md-around justify-content-lg-start">
+            {isLoading
+              ? [...new Array(8)].map((_, i) => <SkeletonPizza key={i} />)
+              : items.map((item) => <PizzaItem pizza={item} key={item.id} />)}
+          </div>
+        </div>
+      </section>
     </>
   );
 };

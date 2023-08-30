@@ -1,31 +1,24 @@
 @import "../variables";
 
-.categories {
-  ul {
-    display: flex;
-
-    li {
-      background-color: #f9f9f9;
-      padding: 13px 30px;
+.menu {
+  nav {
+    .nav-link {
+      color: $black;
+      background-color: $background_2;
       border-radius: 30px;
-      margin-right: 10px;
+      margin-right: 20px;
+      margin-bottom: 10px;
+      padding: 15px 30px;
       font-weight: bold;
       cursor: pointer;
       transition: background-color 0.1s ease-in-out;
-      @include noselect();
-
       &:hover {
-        background-color: darken(#f9f9f9, 2%);
+        background-color: darken($background_2, 2%);
       }
-
-      &:active {
-        background-color: darken(#f9f9f9, 5%);
-      }
-
-      &.active {
-        background-color: #282828;
-        color: #fff;
-      }
+    }
+    .active {
+      background-color: #282828 !important;
+      color: $white !important;
     }
   }
 }

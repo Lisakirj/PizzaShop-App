@@ -7,11 +7,14 @@ import PizzaListPage from "../components/page/PizzaListPage";
 const Main: FC = () => {
   return (
     <>
-      {" "}
-      <div className="content__top">
-        <CategoriesList />
-        <Sort />
-      </div>
+      <section className="menu">
+        <div className="container">
+          <div className="row justify-content-between align-items-center">
+            <CategoriesList />
+            <Sort />
+          </div>
+        </div>
+      </section>
       <PizzaListPage />
     </>
   );
