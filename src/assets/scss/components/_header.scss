@@ -1,5 +1,3 @@
-@import "../variables";
-
 header {
   padding: 40px 0;
   border-bottom: 1px solid $gray-line;
@@ -20,9 +18,7 @@ header {
       padding: 16px 23px;
       border: 1px solid transparent;
       border-radius: 30px;
-
-      transition: background-color $duration ease-in-out,
-        border-color $duration ease-in-out;
+      transition: ease all 0.5s;
       cursor: pointer;
       span {
         color: $white;

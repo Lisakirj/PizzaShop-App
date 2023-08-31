@@ -16,7 +16,8 @@ const AddButton: FC = () => {
           fill="#eb5a1e"
         />
       </svg>
-      додати <span>0</span>
+      додати
+      {/* <span>0</span> */}
     </button>
   );
 };

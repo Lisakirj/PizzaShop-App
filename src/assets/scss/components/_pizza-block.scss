@@ -1,9 +1,9 @@
-@import "../variables";
-
-//pizza_list
 main {
   .pizza_list {
     .pizza_block {
+      flex-grow: 1;
+      flex-basis: 0;
+      height: 100%;
       .card-body {
         .card-text {
           font-size: 20px;
