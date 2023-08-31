@@ -1,7 +1,8 @@
 import { FC } from "react";
+import CartPage from "../components/page/CartPage/CartPage";
 
 const Cart: FC = () => {
-  return <div>Cart</div>;
+  return <CartPage />;
 };
 
 export default Cart;
