@@ -38,7 +38,7 @@ const CartPage: FC = () => {
                       strokeLinejoin="round"
                     />
                   </svg>
-                  <h3 className="fw-bold">Корзина</h3>
+                  <h3 className="fw-bold m-0">Корзина</h3>
                 </div>
                 <div className="col-6 text-end ">
                   <svg
