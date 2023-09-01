@@ -1,32 +1,15 @@
-import { FC, useEffect, useState } from "react";
-import axios from "axios";
+import { FC } from "react";
 
 import PizzaItem from "../../ui/pizza/PizzaItem";
 import SkeletonPizza from "../../ui/pizza/SkeletonPizza";
 import { IPizzaItem } from "../../../types/pizzaItem";
-// import httpService from "../../../services/http.service";
-import config from "../../../config.json";
 
-axios.defaults.baseURL = config.apiEndPoint; // // // // // // !!!!!!
+interface IPizzaListPage {
+  items: IPizzaItem[];
+  isLoading: boolean;
+}
 
-const PizzaListPage: FC = () => {
-  const [items, setItems] = useState<IPizzaItem[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(`items`);
-        setItems(data as IPizzaItem[]);
-        console.log(data);
-        setIsLoading(false);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+const PizzaListPage: FC<IPizzaListPage> = ({ items, isLoading }) => {
   return (
     <>
       <section className="pizza_list">

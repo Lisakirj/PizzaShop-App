@@ -1,26 +1,30 @@
 import { FC, useState } from "react";
 import React from "react";
-type Option = {
-  id: number;
-  name: string;
-};
-const options: Option[] = [
-  { id: 1, name: "популярністю" },
-  { id: 2, name: "ціною" },
-  { id: 3, name: "алфавітом" },
-];
-const Sort: FC = () => {
+
+import { Option } from "../../types/option";
+import options from "../../mockData/options.json";
+
+interface ISort {
+  selectOpt: Option;
+  setSelectOptFunction: (otp: Option) => void;
+  sortBy: string;
+  setSortByFunction: (opt: string) => void;
+}
+const Sort: FC<ISort> = ({
+  selectOpt,
+  setSelectOptFunction,
+  sortBy,
+  setSortByFunction,
+}) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectOpt, setSelectOpt] = useState("популярністю");
 
-  const [sortBy, setSortBy] = useState<string>("asc");
-
-  const handleClick = (opt: string) => {
-    setSelectOpt(opt);
+  const handleClick = (opt: Option) => {
+    setSelectOptFunction(opt);
     setIsOpen(false);
   };
+
   const toggleClass = () =>
-    sortBy === "asc" ? setSortBy("desc") : setSortBy("asc");
+    sortBy === "asc" ? setSortByFunction("desc") : setSortByFunction("asc");
 
   const handleSort: React.MouseEventHandler<SVGSVGElement> = () => {
     toggleClass();
@@ -50,15 +54,15 @@ const Sort: FC = () => {
           data-bs-toggle="dropdown"
           data-bs-display="static"
           aria-expanded="false">
-          {selectOpt}
+          {selectOpt.name}
         </button>
         <ul className="dropdown-menu dropdown-menu-lg-end my-3 ">
           {options.map((opt) => {
             return (
-              <li key={opt.id} onClick={() => handleClick(opt.name)}>
+              <li key={opt.id} onClick={() => handleClick(opt)}>
                 <button
                   className={`dropdown-item ${
-                    selectOpt === opt.name ? "active" : ""
+                    selectOpt.name === opt.name ? "active" : ""
                   }`}
                   type="button">
                   {opt.name}

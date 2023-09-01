@@ -1,0 +1,5 @@
+[
+  { "id": 1, "name": "популярністю", "sortProp": "rating" },
+  { "id": 2, "name": "ціною", "sortProp": "price" },
+  { "id": 3, "name": "алфавітом", "sortProp": "title" }
+]

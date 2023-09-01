@@ -8,7 +8,7 @@ interface IPizzaOptions {
 const PizzaOptions: FC<IPizzaOptions> = ({ types, sizes }) => {
   const [activeType, setActiveType] = useState("тонке");
   const [activeSize, setActiveSize] = useState(0);
-  console.log(types, sizes);
+  // console.log(types, sizes);
   return (
     <div className="pizza_block__selector row justify-between  p-2">
       <div className="row mb-2 g-0">
