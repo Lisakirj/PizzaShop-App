@@ -54,9 +54,16 @@
 /*--md--*/
 @media screen and (max-width: 992px) {
   body {
-    // .wrapper {
-    //   padding: 0 !important;
-    // }
+    .not-found {
+      .row {
+        h1 {
+          font-size: 36px;
+        }
+        p {
+          font-size: 18px;
+        }
+      }
+    }
   }
 }
 /*--sm--*/
@@ -338,6 +345,18 @@
           }
         }
       }
+      .not-found {
+        .row {
+          height: 50vh;
+          h1 {
+            font-size: 30px;
+          }
+          p {
+            font-size: 16px;
+            text-align: center;
+          }
+        }
+      }
     }
   }
 }
@@ -359,6 +378,16 @@
           .pizza_block {
             width: 85% !important;
           }
+        }
+      }
+    }
+    .not-found {
+      .row {
+        h1 {
+          font-size: 28px !important;
+        }
+        p {
+          font-size: 14px;
         }
       }
     }
