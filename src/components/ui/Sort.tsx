@@ -2,29 +2,31 @@ import { FC, useState } from "react";
 import React from "react";
 
 import { Option } from "../../types/option";
-import options from "../../mockData/options.json";
 
-interface ISort {
-  selectOpt: Option;
-  setSelectOptFunction: (otp: Option) => void;
-  sortBy: string;
-  setSortByFunction: (opt: string) => void;
-}
-const Sort: FC<ISort> = ({
-  selectOpt,
-  setSelectOptFunction,
-  sortBy,
-  setSortByFunction,
-}) => {
+import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
+import {
+  getOptions,
+  getSelectOpt,
+  getSortBy,
+  setSelectOpt,
+  setSortBy,
+} from "../../store/slices/filterSlice";
+
+const Sort: FC = () => {
+  const options = useAppSelector(getOptions());
+  const selectOpt = useAppSelector(getSelectOpt());
+  const sortBy = useAppSelector(getSortBy());
+
   const [isOpen, setIsOpen] = useState<boolean>(false);
+  const dispatch = useAppDispatch();
 
   const handleClick = (opt: Option) => {
-    setSelectOptFunction(opt);
+    dispatch(setSelectOpt(opt));
     setIsOpen(false);
   };
 
   const toggleClass = () =>
-    sortBy === "asc" ? setSortByFunction("desc") : setSortByFunction("asc");
+    sortBy === "asc" ? dispatch(setSortBy("desc")) : dispatch(setSortBy("asc"));
 
   const handleSort: React.MouseEventHandler<SVGSVGElement> = () => {
     toggleClass();

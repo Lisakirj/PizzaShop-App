@@ -1,12 +1,17 @@
 import { FC } from "react";
-import categories from "../../mockData/categories.json";
 
-interface ICategoriesList {
-  activeItem: number;
-  onChange: (id: number) => void;
-}
+import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
+import {
+  getActiveItem,
+  getCategories,
+  setActiveItem,
+} from "../../store/slices/filterSlice";
 
-const CategoriesList: FC<ICategoriesList> = ({ activeItem, onChange }) => {
+const CategoriesList: FC = () => {
+  const categories = useAppSelector(getCategories());
+  const activeItem = useAppSelector(getActiveItem());
+  const dispatch = useAppDispatch();
+
   return (
     <div className="col-12 col-lg-8 col-7 text-start">
       <nav className="nav nav-pills my-4">
@@ -16,7 +21,7 @@ const CategoriesList: FC<ICategoriesList> = ({ activeItem, onChange }) => {
             className={`text-sm-center nav-link ${
               activeItem === el.id ? "active" : ""
             }`}
-            onClick={() => onChange(el.id)}>
+            onClick={() => dispatch(setActiveItem(el.id))}>
             {el.name}
           </a>
         ))}

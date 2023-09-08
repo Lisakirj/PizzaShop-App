@@ -5,21 +5,12 @@ import pizzaLogo from "../../../assets/images/pizza.logo.svg";
 
 const HeaderLogo: FC = () => {
   return (
-    // <div className="header__logo">
-    //   <Link to="/">
-    //     <img width="38" src={pizzaLogo} alt="Pizza logo" />
-    //   </Link>
-    //   <div>
-    //     <h1>React-Ts Pizza</h1>
-    //     <p>найсмачніша піца у Всесвіті</p>
-    //   </div>
-    // </div>
     <div className="col-3 col-xl-4 col-lg-5 col-sm-6 d-flex  align-items-center   justify-content-start">
       <Link to="/">
         <img width="38" src={pizzaLogo} alt="Pizza logo" />
       </Link>
       <div className="mx-3">
-        <h1>React Pizza</h1>
+        <h1>React+TS Pizza</h1>
         <p>найсмачніша піца у всесвіті</p>
       </div>
     </div>
