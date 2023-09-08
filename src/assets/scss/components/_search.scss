@@ -1,0 +1,10 @@
+.search-bar {
+  div {
+    border: 1px solid $gray;
+    padding: 5px 15px;
+    color: darken($gray, 20%);
+  }
+  .hidden {
+    opacity: 0;
+  }
+}
