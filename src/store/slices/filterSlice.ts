@@ -4,11 +4,6 @@ import type { RootState, AppDispatch } from "../store";
 import { Option } from "../../types/option";
 import { Category } from "../../types/category";
 import { ParsedQs } from "qs";
-// type params = {
-//   activeItem: number;
-//   selectOpt: Option;
-//   sortBy: string;
-// };
 
 interface IFilterState {
   sortOptions: Option[];
@@ -61,11 +56,19 @@ export const filterSlice = createSlice({
     },
     filterParamsSet: (state, action: PayloadAction<ParsedQs>) => {
       state.activeItem = Number(action.payload.activeItem);
-      state.selectOpt = state.sortOptions.find(
-        (opt) => opt.id === action.payload.selectOpt.id
-      );
+
       if (typeof action.payload.sortBy === "string") {
         state.sortBy = action.payload.sortBy;
+      }
+
+      const cleanSortOptions = state.sortOptions.map((proxyObject) => ({
+        ...proxyObject,
+      }));
+      const selectOpt = cleanSortOptions.find(
+        (opt) => opt.sortProp === action.payload.sortProp
+      );
+      if (selectOpt != undefined) {
+        state.selectOpt = selectOpt;
       }
     },
   },
@@ -81,7 +84,7 @@ const {
 } = actions;
 
 export const setActiveItem = (item: number) => (dispatch: AppDispatch) => {
-  console.log(item);
+  // console.log(item);
   dispatch(activeItemSet(item));
 };
 export const setSelectOpt = (opt: Option) => (dispatch: AppDispatch) => {
@@ -97,6 +100,7 @@ export const setFilterParams =
   (params: ParsedQs) => (dispatch: AppDispatch) => {
     dispatch(filterParamsSet(params));
   };
+
 //getters
 export const getOptions = () => (state: RootState) => state.filter.sortOptions;
 export const getCategories = () => (state: RootState) =>

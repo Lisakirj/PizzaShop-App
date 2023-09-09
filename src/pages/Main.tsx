@@ -26,6 +26,7 @@ import {
   getActiveItem,
   getSearchVal,
   setFilterParams,
+  // getOptions,
 } from "../store/slices/filterSlice.ts";
 
 import {
@@ -66,7 +67,7 @@ const Main: FC = () => {
     if (isMounted.current) {
       const queryString = qs.stringify({
         activeItem,
-        selectOpt,
+        sortProp: selectOpt.sortProp,
         sortBy,
       });
       navigate(`?${queryString}`);
