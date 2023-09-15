@@ -9,8 +9,7 @@ main {
           font-size: 20px;
           font-weight: 800;
         }
-        span,
-        button {
+        span {
           font-weight: 800;
           font-size: 18px;
         }
@@ -38,8 +37,8 @@ main {
       button {
         border: 1px solid $orange;
         color: $orange;
-        font-size: 16px;
-        font-weight: 700;
+        font-size: 16px !important;
+        font-weight: 800;
         padding: 8px;
 
         background-color: $white;
@@ -60,10 +59,10 @@ main {
             path {
               fill: $white;
             }
-            span {
-              background-color: $white !important;
-              color: $orange !important;
-            }
+          }
+          span {
+            background-color: $white;
+            color: $orange;
           }
         }
       }
