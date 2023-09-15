@@ -61,13 +61,10 @@ export const filterSlice = createSlice({
         state.sortBy = action.payload.sortBy;
       }
 
-      const cleanSortOptions = state.sortOptions.map((proxyObject) => ({
-        ...proxyObject,
-      }));
-      const selectOpt = cleanSortOptions.find(
+      const selectOpt = state.sortOptions.find(
         (opt) => opt.sortProp === action.payload.sortProp
       );
-      if (selectOpt != undefined) {
+      if (selectOpt) {
         state.selectOpt = selectOpt;
       }
     },

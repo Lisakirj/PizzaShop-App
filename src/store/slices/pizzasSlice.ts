@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState, AppDispatch } from "../store";
+
 import axios from "axios";
 import { AxiosError } from "axios";
 
@@ -55,6 +56,7 @@ export const loadPizzas =
       dispatch(pizzaRequestFailed(error as AxiosError));
     }
   };
+
 //getters
 export const getPizzas = () => (state: RootState) => state.pizzas.entities;
 export const getIsLoading = () => (state: RootState) => state.pizzas.isLoading;

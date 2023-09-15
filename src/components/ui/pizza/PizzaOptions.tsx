@@ -1,4 +1,6 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
+import { useAppDispatch } from "../../../store/hooks/hooks";
+import { setActiveItems } from "../../../store/slices/cartSlice";
 
 interface IPizzaOptions {
   types: string[];
@@ -6,9 +8,15 @@ interface IPizzaOptions {
 }
 
 const PizzaOptions: FC<IPizzaOptions> = ({ types, sizes }) => {
-  const [activeType, setActiveType] = useState("тонке");
+  const dispatch = useAppDispatch();
+  const [activeType, setActiveType] = useState(0);
   const [activeSize, setActiveSize] = useState(0);
-  // console.log(types, sizes);
+
+  useEffect(() => {
+    const type = types[activeType];
+    const size = sizes[activeSize];
+    dispatch(setActiveItems({ type, size }));
+  }, [dispatch, activeSize, activeType, sizes, types]);
   return (
     <div className="pizza_block__selector row justify-between  p-2">
       <div className="row mb-2 g-0">
@@ -16,8 +24,8 @@ const PizzaOptions: FC<IPizzaOptions> = ({ types, sizes }) => {
           {types.map((opt, i) => (
             <li
               key={i}
-              className={activeType === opt ? "active" : ""}
-              onClick={() => setActiveType(opt)}>
+              className={activeType === i ? "active" : ""}
+              onClick={() => setActiveType(i)}>
               {opt}
             </li>
           ))}

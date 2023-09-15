@@ -6,7 +6,7 @@ import { ParsedQs } from "qs";
 
 import CategoriesList from "../components/ui/CategoriesList";
 import Sort from "../components/ui/Sort";
-import PizzaListPage from "../components/page/PizzaListPage";
+import PizzaList from "../components/page/PizzaListPage/PizzaList.tsx";
 import Pagination from "../components/common/Pagination";
 
 import config from "../config.json";
@@ -99,7 +99,7 @@ const Main: FC = () => {
         <h2 className="text-center p-5">{error}</h2>
       ) : (
         <>
-          <PizzaListPage items={itemsCrop} />
+          <PizzaList items={itemsCrop} />
           {items.length !== 0 ? <Pagination /> : ""}
         </>
       )}
