@@ -1,7 +1,5 @@
 import { FC } from "react";
 
-// import style from "./NotFound.module.scss";
-
 const NotFoundPage: FC = () => {
   return (
     <section className="not-found">
