@@ -231,6 +231,17 @@
         }
       }
     }
+    .cart-empty {
+      .row {
+        height: 80vh;
+        p {
+          text-align: center;
+        }
+        img {
+          width: 80%;
+        }
+      }
+    }
   }
 }
 @media screen and (max-width: 480px) {
@@ -345,6 +356,22 @@
           }
         }
       }
+      .cart-empty {
+        .row {
+          height: 70vh;
+          h1 {
+            font-size: 28px !important;
+          }
+          p {
+            font-size: 16px;
+          }
+          button {
+            span {
+              font-size: 14px !important;
+            }
+          }
+        }
+      }
       .not-found {
         .row {
           height: 50vh;
@@ -377,6 +404,26 @@
           justify-content: center;
           .pizza_block {
             width: 85% !important;
+          }
+        }
+      }
+    }
+    .cart-empty {
+      .row {
+        h1 {
+          font-size: 28px !important;
+        }
+        p {
+          font-size: 16px;
+        }
+        div {
+          &:nth-of-type(1) {
+            display: none;
+          }
+        }
+        button {
+          span {
+            font-size: 14px !important;
           }
         }
       }
