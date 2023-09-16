@@ -15,9 +15,9 @@ import { paginate } from "../utils/helpers/paginate.ts";
 
 import { useAppDispatch, useAppSelector } from "../store/hooks/hooks.ts";
 import {
-  loadPizzas,
   getPizzas,
   getError,
+  fetchPizzas,
 } from "../store/slices/pizzasSlice.ts";
 
 import {
@@ -26,7 +26,6 @@ import {
   getActiveItem,
   getSearchVal,
   setFilterParams,
-  // getOptions,
 } from "../store/slices/filterSlice.ts";
 
 import {
@@ -57,7 +56,14 @@ const Main: FC = () => {
   //first render & url-params don't exist(isURLSearch - false) - request default
   useEffect(() => {
     if (!isURLSearch.current) {
-      dispatch(loadPizzas(activeItem, selectOpt.sortProp, sortBy, searchVal));
+      dispatch(
+        fetchPizzas({
+          activeItem,
+          selectOpt: selectOpt.sortProp,
+          sortBy,
+          searchVal,
+        })
+      );
     }
     isURLSearch.current = false;
   }, [dispatch, activeItem, selectOpt, sortBy, searchVal, currentPage]);
@@ -96,7 +102,10 @@ const Main: FC = () => {
         </div>
       </section>
       {error ? (
-        <h2 className="text-center p-5">{error}</h2>
+        <div className="text-center p-5">
+          <h2>На жаль, не вдалося завантажити піци 🥺</h2>
+          <h4>Спробуйте, будь ласка, пізніше 🙏🏻</h4>
+        </div>
       ) : (
         <>
           <PizzaList items={itemsCrop} />

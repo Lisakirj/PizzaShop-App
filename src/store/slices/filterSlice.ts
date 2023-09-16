@@ -98,7 +98,7 @@ export const setFilterParams =
     dispatch(filterParamsSet(params));
   };
 
-//getters
+//selectors
 export const getOptions = () => (state: RootState) => state.filter.sortOptions;
 export const getCategories = () => (state: RootState) =>
   state.filter.categories;

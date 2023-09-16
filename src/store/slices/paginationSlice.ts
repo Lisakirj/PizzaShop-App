@@ -28,6 +28,7 @@ export const setCurrentPage = (page: number) => (dispatch: AppDispatch) => {
   dispatch(currentPageSet(page));
 };
 
+//selectors
 export const getCurrentPage = () => (state: RootState) =>
   state.pagination.currentPage;
 export const getPageSize = () => (state: RootState) =>
