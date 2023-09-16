@@ -1,65 +1,78 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState, AppDispatch } from "../store";
+import { createSlice } from "@reduxjs/toolkit";
+import type { RootState } from "../store";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { SerializedError } from "@reduxjs/toolkit";
 
 import axios from "axios";
-import { AxiosError } from "axios";
 
 import { IPizzaItem } from "../../types/pizzaItem";
 
 interface IPizzaState {
   entities: IPizzaItem[];
-  isLoading: boolean;
-  errors: string | null;
+  status: "idle" | "loading" | "succeeded" | "failed";
+  errors: SerializedError | null;
 }
 
 const initialState: IPizzaState = {
   entities: [],
-  isLoading: true,
+  status: "idle",
   errors: null,
 };
 
 export const pizzasSlice = createSlice({
   name: "pizzas",
   initialState,
-  reducers: {
-    pizzaReceived: (state, action: PayloadAction<IPizzaItem[]>) => {
-      state.entities = action.payload;
-      state.isLoading = false;
-    },
-    pizzaRequested: (state) => {
-      state.isLoading = true;
-    },
-    pizzaRequestFailed: (state, action: PayloadAction<AxiosError>) => {
-      state.isLoading = false;
-      state.errors = action.payload.message;
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchPizzas.pending, (state) => {
+        state.status = "loading";
+        state.entities = [];
+      })
+      .addCase(fetchPizzas.fulfilled, (state, action) => {
+        console.log("fulfilled", action);
+        state.status = "succeeded";
+        state.entities = action.payload;
+      })
+      .addCase(fetchPizzas.rejected, (state, action) => {
+        console.log("rejected", action.error);
+        state.status = "failed";
+        state.entities = [];
+        state.errors = {
+          message: action.error.message,
+        };
+      });
   },
 });
 
-const { actions, reducer: pizzasReducer } = pizzasSlice;
-const { pizzaReceived, pizzaRequested, pizzaRequestFailed } = actions;
+const { reducer: pizzasReducer } = pizzasSlice;
 
 //fetch
-export const loadPizzas =
-  (activeItem: number, selectOpt: string, sortBy: string, searchVal: string) =>
-  async (dispatch: AppDispatch) => {
-    dispatch(pizzaRequested());
-    try {
-      const { data } = await axios.get(
-        `items?${
-          activeItem > 0 ? `category=${activeItem}` : ""
-        }&sortBy=${selectOpt}&order=${sortBy}&search=${searchVal}`
-      );
+type params = {
+  activeItem: number;
+  selectOpt: string;
+  sortBy: string;
+  searchVal: string;
+};
 
-      dispatch(pizzaReceived(data));
-    } catch (error: unknown) {
-      dispatch(pizzaRequestFailed(error as AxiosError));
-    }
-  };
+export const fetchPizzas = createAsyncThunk(
+  "pizzas/fetchPizzas",
+  async (params: params) => {
+    const { activeItem, selectOpt, sortBy, searchVal } = params;
+    const { data } = await axios.get(
+      `items?${
+        activeItem > 0 ? `category=${activeItem}` : ""
+      }&sortBy=${selectOpt}&order=${sortBy}&search=${searchVal}`
+    );
+    console.log(data);
 
-//getters
+    return data as IPizzaItem[];
+  }
+);
+
+//selectors
 export const getPizzas = () => (state: RootState) => state.pizzas.entities;
-export const getIsLoading = () => (state: RootState) => state.pizzas.isLoading;
+export const getStatus = () => (state: RootState) => state.pizzas.status;
 export const getError = () => (state: RootState) => state.pizzas.errors;
 
 export default pizzasReducer;
