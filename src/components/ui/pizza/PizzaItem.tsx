@@ -62,7 +62,7 @@ const PizzaItem: FC<{ pizza: IPizzaItem }> = ({ pizza }) => {
                 />
               </svg>
               додати
-              <span className="ms-1">{addedCount}</span>
+              {addedCount > 0 && <span className="ms-1">{addedCount}</span>}
             </button>
           </div>
         </div>
