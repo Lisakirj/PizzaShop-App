@@ -5,7 +5,8 @@ import SkeletonPizza from "../../ui/pizza/SkeletonPizza";
 import { IPizzaItem } from "../../../types/pizzaItem";
 import Search from "../../ui/Search";
 import { useAppSelector } from "../../../store/hooks/hooks";
-import { getIsLoading } from "../../../store/slices/pizzasSlice";
+import { getStatus } from "../../../store/slices/pizzasSlice";
+
 interface IPizzaListPage {
   items: IPizzaItem[];
 }
@@ -13,7 +14,8 @@ interface IPizzaListPage {
 const PizzaList: FC<IPizzaListPage> = ({ items }) => {
   // const dispatch = useAppDispatch();
   // const items = useAppSelector(getPizzas());
-  const isLoading = useAppSelector(getIsLoading());
+  const status = useAppSelector(getStatus());
+
   return (
     <>
       <section className="pizza_list">
@@ -27,7 +29,7 @@ const PizzaList: FC<IPizzaListPage> = ({ items }) => {
             </div>
           </div>
           <div className="row  justify-content-sm-between justify-content-md-around justify-content-lg-start">
-            {isLoading
+            {status === "loading"
               ? [...new Array(8)].map((_, i) => <SkeletonPizza key={i} />)
               : items.map((item) => <PizzaItem pizza={item} key={item.id} />)}
           </div>
