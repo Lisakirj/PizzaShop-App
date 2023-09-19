@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState, AppDispatch } from "../store";
-import { cartItem } from "../../types/cartItem";
+import { CartItem } from "../../types/cartItem";
 import { calcTotalPrice } from "../../utils/helpers/calcTotalPrice";
 
 import { customAlphabet } from "nanoid";
@@ -12,7 +12,7 @@ type activeItems = {
 };
 
 interface ICartState {
-  items: cartItem[];
+  items: CartItem[];
   activeType: string;
   activeSize: number;
   totalPrice: number;
@@ -28,7 +28,7 @@ export const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    cartItemAdded: (state, action: PayloadAction<cartItem>) => {
+    cartItemAdded: (state, action: PayloadAction<CartItem>) => {
       // console.log("payload", action.payload);
       const findItem = state.items.find(
         (obj) =>
@@ -85,7 +85,7 @@ export const setActiveItems =
   (items: activeItems) => (dispatch: AppDispatch) => {
     dispatch(activeItemsSet(items));
   };
-export const addCartItem = (item: cartItem) => (dispatch: AppDispatch) => {
+export const addCartItem = (item: CartItem) => (dispatch: AppDispatch) => {
   dispatch(cartItemAdded(item));
 };
 export const removeCartItem = (id: number) => (dispatch: AppDispatch) => {

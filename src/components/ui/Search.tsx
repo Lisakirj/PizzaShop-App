@@ -9,7 +9,7 @@ const Search: FC = () => {
   const dispatch = useAppDispatch();
   const [inputVal, setInputVal] = useState<string>("");
   const [onFocus, setOnFocus] = useState(true);
-  const inputRef = useRef<HTMLInputElement | null>(null);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const setSearchValDebounced = useCallback(

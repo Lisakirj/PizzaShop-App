@@ -1,4 +1,4 @@
-export type cartItem = {
+export type CartItem = {
   id: number;
   title: string;
   imageUrl: string;

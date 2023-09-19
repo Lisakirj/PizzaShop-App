@@ -2,7 +2,7 @@ import { FC, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
 
 import { IPizzaItem } from "../../../types/pizzaItem";
-import { cartItem } from "../../../types/cartItem";
+import { CartItem } from "../../../types/cartItem";
 
 import PizzaOptions from "./PizzaOptions";
 
@@ -24,7 +24,7 @@ const PizzaItem: FC<{ pizza: IPizzaItem }> = ({ pizza }) => {
   }, [cartItems]);
 
   const handleAdd = (item: IPizzaItem) => {
-    const cartItem: cartItem = {
+    const cartItem: CartItem = {
       id: item.id,
       title: item.title,
       imageUrl: item.imageUrl,

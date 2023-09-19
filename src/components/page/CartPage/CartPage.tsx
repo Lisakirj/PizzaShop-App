@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
 
 import EmptyCartPage from "./EmptyCartPage";
-import { cartItem } from "../../../types/cartItem";
+import { CartItem } from "../../../types/cartItem";
 
 import {
   getCartItems,
@@ -22,7 +22,7 @@ const CartPage: FC = () => {
   const totalCount = useAppSelector(getTotalCount());
   const totalPrice = useAppSelector(getTotalPrice());
 
-  const handlerPlus = (item: cartItem) => {
+  const handlerPlus = (item: CartItem) => {
     dispatch(addCartItem(item));
   };
   const handlerMinus = (id: number) => {
