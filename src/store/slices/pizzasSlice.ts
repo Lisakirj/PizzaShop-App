@@ -30,12 +30,10 @@ export const pizzasSlice = createSlice({
         state.entities = [];
       })
       .addCase(fetchPizzas.fulfilled, (state, action) => {
-        console.log("fulfilled", action);
         state.status = "succeeded";
         state.entities = action.payload;
       })
       .addCase(fetchPizzas.rejected, (state, action) => {
-        console.log("rejected", action.error);
         state.status = "failed";
         state.entities = [];
         state.errors = {
@@ -48,7 +46,7 @@ export const pizzasSlice = createSlice({
 const { reducer: pizzasReducer } = pizzasSlice;
 
 //fetch
-type params = {
+type FetchParams = {
   activeItem: number;
   selectOpt: string;
   sortBy: string;
@@ -57,14 +55,14 @@ type params = {
 
 export const fetchPizzas = createAsyncThunk(
   "pizzas/fetchPizzas",
-  async (params: params) => {
+  async (params: FetchParams) => {
     const { activeItem, selectOpt, sortBy, searchVal } = params;
     const { data } = await axios.get(
       `items?${
         activeItem > 0 ? `category=${activeItem}` : ""
       }&sortBy=${selectOpt}&order=${sortBy}&search=${searchVal}`
     );
-    console.log(data);
+    // console.log(data);
 
     return data as IPizzaItem[];
   }
