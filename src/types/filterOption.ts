@@ -1,4 +1,4 @@
-export type Option = {
+export type FilterOption = {
   id: number;
   name: string;
   sortProp: string;

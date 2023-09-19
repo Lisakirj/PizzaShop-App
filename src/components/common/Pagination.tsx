@@ -8,6 +8,7 @@ import {
   setCurrentPage,
 } from "../../store/slices/paginationSlice";
 import { getPizzas } from "../../store/slices/pizzasSlice";
+// backend pagination: `/blogs?page=1&limit=10` --> https://64e1055b50713530432ce695.mockapi.io/items?page=${currentPage}&limit=${pageSize}
 
 const Pagination: FC = () => {
   const dispatch = useAppDispatch();

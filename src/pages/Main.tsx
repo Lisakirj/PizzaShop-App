@@ -1,6 +1,7 @@
 import { FC, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { useAppDispatch, useAppSelector } from "../store/hooks/hooks.ts";
+
 import qs from "qs";
 import { ParsedQs } from "qs";
 
@@ -9,11 +10,8 @@ import Sort from "../components/ui/Sort";
 import PizzaList from "../components/page/PizzaListPage/PizzaList.tsx";
 import Pagination from "../components/common/Pagination";
 
-import config from "../config.json";
-// import httpService from "../../../services/http.service";
 import { paginate } from "../utils/helpers/paginate.ts";
 
-import { useAppDispatch, useAppSelector } from "../store/hooks/hooks.ts";
 import {
   getPizzas,
   getError,
@@ -32,9 +30,6 @@ import {
   getCurrentPage,
   getPageSize,
 } from "../store/slices/paginationSlice.ts";
-
-axios.defaults.baseURL = config.apiEndPoint; //"https://64e1055b50713530432ce695.mockapi.io/items"// `items?category=${activeItem}`
-// backend pagination: `/blogs?page=1&limit=10` --> https://64e1055b50713530432ce695.mockapi.io/items?page=${currentPage}&limit=${pageSize}
 
 const Main: FC = () => {
   const navigate = useNavigate();
