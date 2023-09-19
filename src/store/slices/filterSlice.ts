@@ -1,14 +1,19 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState, AppDispatch } from "../store";
 
-import { Option } from "../../types/option";
-import { Category } from "../../types/category";
+import { FilterOption } from "../../types/filterOption";
+
 import { ParsedQs } from "qs";
 
+type FilterCategory = {
+  id: number;
+  name: string;
+};
+
 interface IFilterState {
-  sortOptions: Option[];
-  categories: Category[];
-  selectOpt: Option;
+  sortOptions: FilterOption[];
+  categories: FilterCategory[];
+  selectOpt: FilterOption;
   sortBy: string;
   activeItem: number;
   searchVal: string;
@@ -45,7 +50,7 @@ export const filterSlice = createSlice({
     activeItemSet: (state, action: PayloadAction<number>) => {
       state.activeItem = action.payload;
     },
-    selectOptSet: (state, action: PayloadAction<Option>) => {
+    selectOptSet: (state, action: PayloadAction<FilterOption>) => {
       state.selectOpt = action.payload;
     },
     sortBySet: (state, action: PayloadAction<string>) => {
@@ -84,7 +89,7 @@ export const setActiveItem = (item: number) => (dispatch: AppDispatch) => {
   // console.log(item);
   dispatch(activeItemSet(item));
 };
-export const setSelectOpt = (opt: Option) => (dispatch: AppDispatch) => {
+export const setSelectOpt = (opt: FilterOption) => (dispatch: AppDispatch) => {
   dispatch(selectOptSet(opt));
 };
 export const setSortBy = (str: string) => (dispatch: AppDispatch) => {

@@ -3,19 +3,26 @@ import type { RootState } from "../store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { SerializedError } from "@reduxjs/toolkit";
 
-import axios from "axios";
+import httpService from "../../services/http.service";
 
 import { IPizzaItem } from "../../types/pizzaItem";
 
+enum Status {
+  IDLE = "idle",
+  LOADING = "loading",
+  SUCCEEDED = "succeeded",
+  FAILED = "failed",
+}
+
 interface IPizzaState {
   entities: IPizzaItem[];
-  status: "idle" | "loading" | "succeeded" | "failed";
+  status: Status;
   errors: SerializedError | null;
 }
 
 const initialState: IPizzaState = {
   entities: [],
-  status: "idle",
+  status: Status.IDLE,
   errors: null,
 };
 
@@ -26,15 +33,15 @@ export const pizzasSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchPizzas.pending, (state) => {
-        state.status = "loading";
+        state.status = Status.LOADING;
         state.entities = [];
       })
       .addCase(fetchPizzas.fulfilled, (state, action) => {
-        state.status = "succeeded";
+        state.status = Status.SUCCEEDED;
         state.entities = action.payload;
       })
       .addCase(fetchPizzas.rejected, (state, action) => {
-        state.status = "failed";
+        state.status = Status.FAILED;
         state.entities = [];
         state.errors = {
           message: action.error.message,
@@ -57,12 +64,11 @@ export const fetchPizzas = createAsyncThunk(
   "pizzas/fetchPizzas",
   async (params: FetchParams) => {
     const { activeItem, selectOpt, sortBy, searchVal } = params;
-    const { data } = await axios.get(
+    const { data } = await httpService.get(
       `items?${
         activeItem > 0 ? `category=${activeItem}` : ""
       }&sortBy=${selectOpt}&order=${sortBy}&search=${searchVal}`
     );
-    // console.log(data);
 
     return data as IPizzaItem[];
   }

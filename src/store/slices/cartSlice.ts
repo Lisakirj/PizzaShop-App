@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { RootState, AppDispatch } from "../store";
-import { CartItem } from "../../types/cartItem";
-import { calcTotalPrice } from "../../utils/helpers/calcTotalPrice";
-
 import { customAlphabet } from "nanoid";
 import { createSelector } from "@reduxjs/toolkit";
 
-type activeItems = {
+import { CartItem } from "../../types/cartItem";
+import { calcTotalPrice } from "../../utils/helpers/calcTotalPrice";
+
+type ActiveItems = {
   type: string;
   size: number;
 };
@@ -47,7 +47,7 @@ export const cartSlice = createSlice({
       state.totalPrice = calcTotalPrice(state.items);
     },
 
-    activeItemsSet: (state, action: PayloadAction<activeItems>) => {
+    activeItemsSet: (state, action: PayloadAction<ActiveItems>) => {
       state.activeType = action.payload.type;
       state.activeSize = action.payload.size;
     },
@@ -82,7 +82,7 @@ const {
 } = actions;
 
 export const setActiveItems =
-  (items: activeItems) => (dispatch: AppDispatch) => {
+  (items: ActiveItems) => (dispatch: AppDispatch) => {
     dispatch(activeItemsSet(items));
   };
 export const addCartItem = (item: CartItem) => (dispatch: AppDispatch) => {

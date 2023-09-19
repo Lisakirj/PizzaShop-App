@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import React from "react";
 
-import { Option } from "../../types/option";
+import { FilterOption } from "../../types/filterOption";
 
 import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
 import {
@@ -20,7 +20,7 @@ const Sort: FC = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const dispatch = useAppDispatch();
 
-  const handleClick = (opt: Option) => {
+  const handleClick = (opt: FilterOption) => {
     dispatch(setSelectOpt(opt));
     setIsOpen(false);
   };

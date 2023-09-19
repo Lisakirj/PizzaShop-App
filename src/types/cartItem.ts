@@ -1,4 +1,4 @@
-export type CartItem = {
+export interface CartItem {
   id: number;
   title: string;
   imageUrl: string;
@@ -6,4 +6,4 @@ export type CartItem = {
   size: number;
   type: string;
   count: number;
-};
+}
