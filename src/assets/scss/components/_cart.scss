@@ -40,6 +40,20 @@
               fill: $white;
             }
           }
+          &.disabled {
+            cursor: default;
+            circle {
+              stroke: #d7d7d7;
+            }
+            path {
+              fill: #d0d0d0;
+            }
+            &:hover {
+              circle {
+                fill: none;
+              }
+            }
+          }
         }
       }
       &:last-of-type {
