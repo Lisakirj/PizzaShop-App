@@ -3,16 +3,19 @@ Pet project 🍕Pizza App: choose your favorite pizza and place an order.
 🛠 Technologies:
 
 1. Vite
-2. ReactJS 18
-3. Bootstrap 5
-4. SCSS
-5. TypeScript
-6. React Hooks
-7. Mockapi
-8. Axios
-9. React Query
-10. React Router v6
-11. Redux Toolkit
-12. React Content Loader
-13. Lodash. Debounce
-14. Code Splitting, React Loadable, useWhyDidYouUpdate
+2. yarn
+3. ReactJS 18
+4. Bootstrap 5
+5. SCSS
+6. TypeScript
+7. React Hooks
+8. Mockapi
+9. Axios
+10. React Query
+11. React Router v6
+12. Redux Toolkit
+13. Redux Persist
+14. React Content Loader
+15. Lodash. Debounce
+16. Ahooks.useWhyDidYouUpdate
+17. Code Splitting, React Loadable,
