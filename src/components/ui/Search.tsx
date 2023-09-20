@@ -1,6 +1,6 @@
 import { FC, useRef, useState, useCallback } from "react";
 import React from "react";
-import * as _ from "lodash";
+import { debounce } from "lodash";
 
 import { useAppDispatch } from "../../store/hooks/hooks";
 import { setSearchVal } from "../../store/slices/filterSlice";
@@ -13,10 +13,10 @@ const Search: FC = () => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const setSearchValDebounced = useCallback(
-    _.debounce((val) => {
+    debounce((val) => {
       dispatch(setSearchVal(val));
     }, 250),
-    []
+    [dispatch]
   );
 
   const handleChange: React.ChangeEventHandler<HTMLInputElement> = (event) => {

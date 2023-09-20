@@ -1,16 +1,17 @@
 import { FC } from "react";
-
 import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
+import React from "react";
+
 import {
   getActiveItem,
   getCategories,
   setActiveItem,
 } from "../../store/slices/filterSlice";
 
-const CategoriesList: FC = () => {
+const CategoriesList: FC = React.memo(() => {
+  const dispatch = useAppDispatch();
   const categories = useAppSelector(getCategories());
   const activeItem = useAppSelector(getActiveItem());
-  const dispatch = useAppDispatch();
 
   return (
     <div className="col-12 col-lg-8 col-7 text-start">
@@ -28,5 +29,5 @@ const CategoriesList: FC = () => {
       </nav>
     </div>
   );
-};
+});
 export default CategoriesList;

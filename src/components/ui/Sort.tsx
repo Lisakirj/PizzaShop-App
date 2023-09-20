@@ -1,9 +1,9 @@
 import { FC, useState } from "react";
 import React from "react";
+import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
 
 import { FilterOption } from "../../types/filterOption";
 
-import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
 import {
   getOptions,
   getSelectOpt,
@@ -12,13 +12,13 @@ import {
   setSortBy,
 } from "../../store/slices/filterSlice";
 
-const Sort: FC = () => {
+const Sort: FC = React.memo(() => {
+  const dispatch = useAppDispatch();
   const options = useAppSelector(getOptions());
   const selectOpt = useAppSelector(getSelectOpt());
   const sortBy = useAppSelector(getSortBy());
 
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const dispatch = useAppDispatch();
 
   const handleClick = (opt: FilterOption) => {
     dispatch(setSelectOpt(opt));
@@ -76,6 +76,6 @@ const Sort: FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Sort;
