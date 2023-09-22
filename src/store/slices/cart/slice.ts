@@ -16,7 +16,6 @@ export const cartSlice = createSlice({
   initialState,
   reducers: {
     cartItemAdded: (state, action: PayloadAction<CartItem>) => {
-      // console.log("payload", action.payload);
       const findItem = state.items.find(
         (obj) =>
           obj.title === action.payload.title &&
