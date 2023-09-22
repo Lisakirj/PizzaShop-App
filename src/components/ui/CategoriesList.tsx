@@ -1,12 +1,12 @@
+import React from "react";
 import { FC } from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
-import React from "react";
 
 import {
   getActiveItem,
   getCategories,
-  setActiveItem,
-} from "../../store/slices/filterSlice";
+} from "../../store/slices/filter/selectors";
+import { setActiveItem } from "../../store/slices/filter/slice";
 
 const CategoriesList: FC = React.memo(() => {
   const dispatch = useAppDispatch();

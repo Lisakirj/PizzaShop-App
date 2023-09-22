@@ -1,7 +1,7 @@
 import { FC } from "react";
-import HeaderLogo from "./HeaderLogo";
-import HeaderCart from "./HeaderCart";
 import { useLocation } from "react-router-dom";
+
+import { HeaderCart, HeaderLogo } from ".";
 
 const Header: FC = () => {
   const path = useLocation();

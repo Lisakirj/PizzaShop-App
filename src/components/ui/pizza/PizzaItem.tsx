@@ -1,17 +1,17 @@
 import { FC, useMemo } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
 
-import { IPizzaItem } from "../../../types/pizzaItem";
-import { CartItem } from "../../../types/cartItem";
+import { IPizzaItem } from "../../../store/slices/pizzas/types";
+import { CartItem } from "../../../store/slices/cart/types";
 
-import PizzaOptions from "./PizzaOptions";
+import { PizzaOptions } from ".";
 
 import {
   getActiveType,
   getActiveSize,
-  addCartItem,
   getCartItemByTitle,
-} from "../../../store/slices/cartSlice";
+} from "../../../store/slices/cart/selectors";
+import { addCartItem } from "../../../store/slices/cart/slice";
 
 const PizzaItem: FC<{ pizza: IPizzaItem }> = ({ pizza }) => {
   const dispatch = useAppDispatch();

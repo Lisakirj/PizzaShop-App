@@ -2,15 +2,14 @@ import { FC, useState } from "react";
 import React from "react";
 import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
 
-import { FilterOption } from "../../types/filterOption";
+import { FilterOption } from "../../store/slices/filter/types";
 
 import {
   getOptions,
   getSelectOpt,
   getSortBy,
-  setSelectOpt,
-  setSortBy,
-} from "../../store/slices/filterSlice";
+} from "../../store/slices/filter/selectors";
+import { setSelectOpt, setSortBy } from "../../store/slices/filter/slice";
 
 const Sort: FC = React.memo(() => {
   const dispatch = useAppDispatch();

@@ -1,5 +1,6 @@
 import { FC } from "react";
-import NotFoundPage from "../components/page/NotFoundPage/NotFoundPage";
+
+import { NotFoundPage } from "../components";
 
 const NotFound: FC = () => {
   return <NotFoundPage />;
