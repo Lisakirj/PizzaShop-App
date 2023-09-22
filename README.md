@@ -11,11 +11,11 @@ Pet project 🍕Pizza App: choose your favorite pizza and place an order.
 7. React Hooks
 8. Mockapi
 9. Axios
-10. React Query
-11. React Router v6
-12. Redux Toolkit
+10. React Router v6
+11. Redux Toolkit
+12. Redux Selector. CreateSelector.
 13. Redux Persist
 14. React Content Loader
 15. Lodash. Debounce
-16. Ahooks.useWhyDidYouUpdate
-17. Code Splitting
+16. Ahooks. useWhyDidYouUpdate
+17. Code Splitting. Lazy
