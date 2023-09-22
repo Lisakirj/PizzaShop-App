@@ -1,5 +1,5 @@
 import { FC } from "react";
-import Header from "../ui/header/Header";
+import { Header } from "../components/ui/header";
 import { Outlet } from "react-router-dom";
 
 const MainLayout: FC = () => {

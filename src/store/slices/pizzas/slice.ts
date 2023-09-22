@@ -1,24 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { RootState } from "../store";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { SerializedError } from "@reduxjs/toolkit";
 
-import httpService from "../../services/http.service";
+import httpService from "../../../services/http.service";
 
-import { IPizzaItem } from "../../types/pizzaItem";
-
-enum Status {
-  IDLE = "idle",
-  LOADING = "loading",
-  SUCCEEDED = "succeeded",
-  FAILED = "failed",
-}
-
-interface IPizzaState {
-  entities: IPizzaItem[];
-  status: Status;
-  errors: SerializedError | null;
-}
+import { IPizzaItem, Status, IPizzaState } from "./types";
 
 const initialState: IPizzaState = {
   entities: [],
@@ -73,10 +58,5 @@ export const fetchPizzas = createAsyncThunk(
     return data as IPizzaItem[];
   }
 );
-
-//selectors
-export const getPizzas = () => (state: RootState) => state.pizzas.entities;
-export const getStatus = () => (state: RootState) => state.pizzas.status;
-export const getError = () => (state: RootState) => state.pizzas.errors;
 
 export default pizzasReducer;

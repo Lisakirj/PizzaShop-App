@@ -7,6 +7,7 @@ import { StrictMode } from "react";
 import App from "./App.tsx";
 
 import configureAppStore from "./store/store.ts";
+
 const { store, persistor } = configureAppStore();
 
 ReactDOM.createRoot(document.getElementById("root")!).render(

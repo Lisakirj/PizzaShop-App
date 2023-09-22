@@ -1,23 +1,9 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState, AppDispatch } from "../store";
-
-import { FilterOption } from "../../types/filterOption";
+import type { AppDispatch } from "../../store";
 
 import { ParsedQs } from "qs";
 
-type FilterCategory = {
-  id: number;
-  name: string;
-};
-
-interface IFilterState {
-  sortOptions: FilterOption[];
-  categories: FilterCategory[];
-  selectOpt: FilterOption;
-  sortBy: string;
-  activeItem: number;
-  searchVal: string;
-}
+import { IFilterState, FilterOption } from "./types";
 
 const initialState: IFilterState = {
   sortOptions: [
@@ -102,15 +88,5 @@ export const setFilterParams =
   (params: ParsedQs) => (dispatch: AppDispatch) => {
     dispatch(filterParamsSet(params));
   };
-
-//selectors
-export const getOptions = () => (state: RootState) => state.filter.sortOptions;
-export const getCategories = () => (state: RootState) =>
-  state.filter.categories;
-export const getSelectOpt = () => (state: RootState) => state.filter.selectOpt;
-export const getSortBy = () => (state: RootState) => state.filter.sortBy;
-export const getActiveItem = () => (state: RootState) =>
-  state.filter.activeItem;
-export const getSearchVal = () => (state: RootState) => state.filter.searchVal;
 
 export default filterReducer;

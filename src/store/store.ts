@@ -11,10 +11,10 @@ import {
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
-import filterReducer from "./slices/filterSlice";
-import pizzasReducer from "./slices/pizzasSlice";
-import cartReducer from "./slices/cartSlice";
-import paginationReducer from "./slices/paginationSlice";
+import filterReducer from "./slices/filter/slice";
+import pizzasReducer from "./slices/pizzas/slice";
+import cartReducer from "./slices/cart/slice";
+import paginationReducer from "./slices/pagination/slice";
 
 const persistConfig = {
   key: "root",

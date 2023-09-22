@@ -5,31 +5,24 @@ import { useAppDispatch, useAppSelector } from "../store/hooks/hooks.ts";
 import qs from "qs";
 import { ParsedQs } from "qs";
 
-import CategoriesList from "../components/ui/CategoriesList";
-import Sort from "../components/ui/Sort";
-import PizzaList from "../components/page/PizzaListPage/PizzaList.tsx";
-import Pagination from "../components/common/Pagination";
+import { CategoriesList, Sort, PizzaList, Pagination } from "../components";
 
 import { paginate } from "../utils/helpers/paginate.ts";
 
-import {
-  getPizzas,
-  getError,
-  fetchPizzas,
-} from "../store/slices/pizzasSlice.ts";
-
+import { getPizzas, getError } from "../store/slices/pizzas/selectors.ts";
+import { fetchPizzas } from "../store/slices/pizzas/slice.ts";
 import {
   getSelectOpt,
   getSortBy,
   getActiveItem,
   getSearchVal,
-  setFilterParams,
-} from "../store/slices/filterSlice.ts";
+} from "../store/slices/filter/selectors.ts";
+import { setFilterParams } from "../store/slices/filter/slice.ts";
 
 import {
   getCurrentPage,
   getPageSize,
-} from "../store/slices/paginationSlice.ts";
+} from "../store/slices/pagination/selectors.ts";
 
 const Main: FC = () => {
   const navigate = useNavigate();

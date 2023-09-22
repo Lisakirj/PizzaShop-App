@@ -2,18 +2,21 @@ import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks/hooks";
 
-import EmptyCartPage from "./EmptyCartPage";
-import { CartItem } from "../../../types/cartItem";
+import { CartItem } from "../../../store/slices/cart/types";
+
+import { EmptyCartPage } from "../..";
 
 import {
   getCartItems,
   getTotalCount,
   getTotalPrice,
+} from "../../../store/slices/cart/selectors";
+import {
   clearCart,
   removeCartItem,
   addCartItem,
   decreaseCartItem,
-} from "../../../store/slices/cartSlice";
+} from "../../../store/slices/cart/slice";
 
 const CartPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -35,7 +38,7 @@ const CartPage: FC = () => {
     dispatch(clearCart());
   };
   if (totalCount < 1) return <EmptyCartPage />;
-  // console.log(cartItem);
+
   return (
     <section className="cart">
       <div className="container">
@@ -135,6 +138,7 @@ const CartPage: FC = () => {
                     </div>
                     <div className="col-sm-3 col-2 d-flex align-items-center justify-content-center">
                       <svg
+                        className={item.count === 1 ? "disabled" : ""}
                         onClick={() => handlerMinus(item.id)}
                         xmlns="http://www.w3.org/2000/svg"
                         width="32"

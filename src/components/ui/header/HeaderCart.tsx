@@ -1,11 +1,16 @@
 import { FC } from "react";
 import { Link } from "react-router-dom";
-import { getTotalPrice, getTotalCount } from "../../../store/slices/cartSlice";
 import { useAppSelector } from "../../../store/hooks/hooks";
+
+import {
+  getTotalPrice,
+  getTotalCount,
+} from "../../../store/slices/cart/selectors";
 
 const HeaderCart: FC = () => {
   const totalPrice = useAppSelector(getTotalPrice());
   const totalCount = useAppSelector(getTotalCount());
+
   return (
     <div className="col-2 col-xl-3 col-lg-4 col-md-5 col-sm-6 text-center text-sm-end">
       <Link to="/cart">

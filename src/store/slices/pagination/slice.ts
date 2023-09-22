@@ -1,10 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState, AppDispatch } from "../store";
-
-interface IPaginationState {
-  currentPage: number;
-  pageSize: number;
-}
+import type { AppDispatch } from "../../store";
+import { IPaginationState } from "./types";
 
 const initialState: IPaginationState = {
   currentPage: 1,
@@ -27,11 +23,5 @@ const { currentPageSet } = actions;
 export const setCurrentPage = (page: number) => (dispatch: AppDispatch) => {
   dispatch(currentPageSet(page));
 };
-
-//selectors
-export const getCurrentPage = () => (state: RootState) =>
-  state.pagination.currentPage;
-export const getPageSize = () => (state: RootState) =>
-  state.pagination.pageSize;
 
 export default paginationReducer;

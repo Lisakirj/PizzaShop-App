@@ -12,6 +12,7 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.5",
     "@types/react-redux": "^7.1.26",
+    "ahooks": "^3.7.8",
     "axios": "^1.4.0",
     "bootstrap-icons": "^1.10.5",
     "lodash": "^4.17.21",
@@ -23,6 +24,7 @@
     "react-loading-skeleton": "^3.3.1",
     "react-redux": "^8.1.2",
     "react-router-dom": "^6.15.0",
+    "redux-persist": "^6.0.0",
     "sass": "^1.64.2"
   },
   "devDependencies": {

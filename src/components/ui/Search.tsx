@@ -3,7 +3,7 @@ import React from "react";
 import { debounce } from "lodash";
 
 import { useAppDispatch } from "../../store/hooks/hooks";
-import { setSearchVal } from "../../store/slices/filterSlice";
+import { setSearchVal } from "../../store/slices/filter/slice";
 
 const Search: FC = () => {
   const dispatch = useAppDispatch();

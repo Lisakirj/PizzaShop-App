@@ -1,6 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { useAppDispatch } from "../../../store/hooks/hooks";
-import { setActiveItems } from "../../../store/slices/cartSlice";
+import { setActiveItems } from "../../../store/slices/cart/slice";
 
 interface IPizzaOptions {
   types: string[];

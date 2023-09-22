@@ -1,13 +1,13 @@
 import { FC } from "react";
+import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
 import * as _ from "lodash";
 
-import { useAppSelector, useAppDispatch } from "../../store/hooks/hooks";
 import {
   getCurrentPage,
   getPageSize,
-  setCurrentPage,
-} from "../../store/slices/paginationSlice";
-import { getPizzas } from "../../store/slices/pizzasSlice";
+} from "../../store/slices/pagination/selectors";
+import { setCurrentPage } from "../../store/slices/pagination/slice";
+import { getPizzas } from "../../store/slices/pizzas/selectors";
 // backend pagination: `/blogs?page=1&limit=10` --> https://64e1055b50713530432ce695.mockapi.io/items?page=${currentPage}&limit=${pageSize}
 
 const Pagination: FC = () => {
