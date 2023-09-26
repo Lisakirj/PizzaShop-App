@@ -36,7 +36,7 @@ const Pagination: FC = () => {
     <section className="pagination">
       <div className="container">
         <div className="row justify-content-center">
-          <div className="col-2 py-3 ">
+          <div className="col py-3 d-flex justify-content-center">
             <nav>
               <ul className="pagination">
                 <li className="page-item">

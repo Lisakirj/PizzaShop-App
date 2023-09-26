@@ -39,15 +39,15 @@ const PizzaItem: FC<{ pizza: IPizzaItem }> = ({ pizza }) => {
   return (
     <div className="pizza_block col-sm-5 col-lg-4 col-xl-3 ">
       <div className="card mb-0 mt-3 my-sm-4 border-0">
-        <img src={pizza.imageUrl} className=" mx-2 w-90" alt="pizza" />
+        <img src={pizza.imageUrl} className=" mx-2" alt="pizza" />
         <div className="card-body">
           <p className="card-text text-center">{pizza.title}</p>
           <PizzaOptions types={pizza.types} sizes={pizza.sizes} />
-          <div className="row justify-between p-2 mt-sm-2 mt-md-3 align-items-center text-sm-center">
-            <span className="w-50 my-2 mb-sm-2 mb-md-0 text-center">
+          <div className="row justify-between  mt-sm-2 mt-md-4 align-items-center text-sm-center">
+            <span className="col-5 p-0 my-2 mb-sm-2 mb-md-0 text-center">
               від {pizza.price} грн
             </span>
-            <button className="w-50 " onClick={() => handleAdd(pizza)}>
+            <button className="col-7 " onClick={() => handleAdd(pizza)}>
               {" "}
               <svg
                 className="me-2"
@@ -62,7 +62,7 @@ const PizzaItem: FC<{ pizza: IPizzaItem }> = ({ pizza }) => {
                 />
               </svg>
               додати
-              {addedCount > 0 && <span className="ms-1">{addedCount}</span>}
+              {addedCount > 0 && <span className="ms-2">{addedCount}</span>}
             </button>
           </div>
         </div>

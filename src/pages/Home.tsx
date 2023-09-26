@@ -24,7 +24,7 @@ import {
   getPageSize,
 } from "../store/slices/pagination/selectors.ts";
 
-const Main: FC = () => {
+const Home: FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const items = useAppSelector(getPizzas());
@@ -104,4 +104,4 @@ const Main: FC = () => {
   );
 };
 
-export default Main;
+export default Home;

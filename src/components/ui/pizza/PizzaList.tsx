@@ -17,11 +17,11 @@ const PizzaList: FC<IPizzaListPage> = ({ items }) => {
   return (
     <section className="pizza_list">
       <div className="container">
-        <div className="row ">
-          <div className="col fs-3 fw-bold mt-3 mt-sm-0">
+        <div className="row pt-3 pt-sm-0 my-sm-3 justify-content-between">
+          <div className=" col-sm-3 fs-3 fw-bold mt-3 mt-sm-0">
             <span>Всі піци</span>
           </div>
-          <div className="col-3 ">
+          <div className="col-sm-9 col-lg-4  ">
             <Search />
           </div>
         </div>

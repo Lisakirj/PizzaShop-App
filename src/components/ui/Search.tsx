@@ -32,7 +32,7 @@ const Search: FC = () => {
   };
   return (
     <>
-      <div className="search-bar d-flex align-items-center text-end ">
+      <div className="search-bar d-flex align-items-center justify-content-end ">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="18"

@@ -1,6 +1,6 @@
 import _ from "lodash";
 
-import { IPizzaItem } from "../../types/pizzaItem";
+import { IPizzaItem } from "../../store/slices/pizzas/types";
 
 export function paginate(
   items: IPizzaItem[],

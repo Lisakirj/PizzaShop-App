@@ -1,13 +1,11 @@
 main {
   .pizza_list {
     .pizza_block {
-      // flex-grow: 1;
-      // flex-basis: 0;
-      // height: 100%;
       .card-body {
         .card-text {
           font-size: 20px;
           font-weight: 800;
+          height: 60px;
         }
         span {
           font-weight: 800;
@@ -39,7 +37,7 @@ main {
         color: $orange;
         font-size: 16px !important;
         font-weight: 800;
-        padding: 8px;
+        padding: 10px;
 
         background-color: $white;
         border-radius: 30px;
