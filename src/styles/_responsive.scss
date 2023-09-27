@@ -126,7 +126,7 @@
     .pizza_list {
       .row {
         &:nth-child(1) {
-          align-items: center;
+          align-items: center !important;
 
           div {
             &:first-child {
@@ -271,7 +271,7 @@
         .row {
           &:nth-child(1) {
             align-items: center;
-            margin-top: 10px;
+
             div {
               &:first-child {
                 margin-top: 0 !important;
