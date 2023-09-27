@@ -33,7 +33,7 @@ const PizzaItem: FC<{ pizza: IPizzaItem }> = ({ pizza }) => {
       size: activeSize,
       count: 1,
     };
-    // console.log(cartItem);
+
     dispatch(addCartItem(cartItem));
   };
   return (
