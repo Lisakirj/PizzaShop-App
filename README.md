@@ -1,6 +1,6 @@
 Pet project 🍕Pizza App: choose your favorite pizza and place an order.
 
-Demo: <a href="https://pizza-shop-lisas-projects.vercel.app/">https://pizza-shop-lisas-projects.vercel.app/</a>
+🖥️ Demo: <a href="https://pizza-shop-lisas-projects.vercel.app/">https://pizza-shop-lisas-projects.vercel.app/</a>
 
 🛠 Technologies:
 
